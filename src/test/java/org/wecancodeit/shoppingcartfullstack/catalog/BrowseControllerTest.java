@@ -21,7 +21,7 @@ public class BrowseControllerTest {
 
 	@Test
 	public void shouldFindAllProducts() {
-		Collection<Product> result = underTest.findProducts();
+		Collection<Product> result = underTest.findAllProducts();
 
 		assertThat(result.size(), is(greaterThan(0)));
 	}
