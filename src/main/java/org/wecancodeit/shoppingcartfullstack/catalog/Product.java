@@ -1,6 +1,10 @@
 package org.wecancodeit.shoppingcartfullstack.catalog;
 
+//@Entity
 public class Product {
+
+	// @Id
+	// private long id;
 
 	private String name;
 
