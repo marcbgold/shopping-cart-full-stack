@@ -1,4 +1,4 @@
-package org.wecancodeit.shoppingcartfullstack;
+package org.wecancodeit.shoppingcartfullstack.catalog;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -19,7 +19,7 @@ public class BrowseMvcTest {
 	private MockMvc mvc;
 
 	@Test
-	public void shouldDisplayCart() throws Exception {
-		mvc.perform(get("/cart")).andExpect(status().isOk());
+	public void shouldDisplayProducts() throws Exception {
+		mvc.perform(get("/products")).andExpect(status().isOk());
 	}
 }
