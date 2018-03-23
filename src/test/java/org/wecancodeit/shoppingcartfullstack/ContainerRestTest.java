@@ -40,4 +40,13 @@ public class ContainerRestTest {
 
 		assertThat(response.getBody().getId(), is(greaterThan(0L)));
 	}
+
+	@Test
+	public void shouldDisplaySearchResults() {
+		ResponseEntity<String> response = restTemplate.getForEntity("/search", String.class);
+
+		HttpStatus status = response.getStatusCode();
+
+		assertThat(status, is(HttpStatus.OK));
+	}
 }

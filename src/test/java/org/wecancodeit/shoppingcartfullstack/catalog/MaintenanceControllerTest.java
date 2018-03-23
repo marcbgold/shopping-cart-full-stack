@@ -30,7 +30,7 @@ public class MaintenanceControllerTest {
 	}
 
 	@Test
-	public void shouldCreateNewProduct() {
+	public void shouldCreateAndSaveNewProduct() {
 		when(productRepo.save(incomingProduct)).thenReturn(persistentProduct);
 
 		Product result = underTest.addNewProduct(incomingProduct);
