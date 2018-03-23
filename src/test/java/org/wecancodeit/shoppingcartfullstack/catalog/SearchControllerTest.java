@@ -1,6 +1,7 @@
 package org.wecancodeit.shoppingcartfullstack.catalog;
 
 import static org.hamcrest.Matchers.containsInAnyOrder;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
@@ -40,6 +41,16 @@ public class SearchControllerTest {
 		Collection<Product> results = underTest.findProductByName("test");
 
 		assertThat(results, containsInAnyOrder(product1, product2));
+	}
+
+	@Test
+	public void shouldReturnEmptyCollectionWhenProductNameNotFound() {
+		// when(productRepo.findByName("notFound")).thenReturn(new
+		// ArrayList<Product>());
+
+		Collection<Product> results = underTest.findProductByName("notFound");
+		assertThat(results.isEmpty(), is(true));
+
 	}
 
 }
