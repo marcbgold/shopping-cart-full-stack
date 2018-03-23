@@ -1,27 +1,45 @@
 package org.wecancodeit.shoppingcartfullstack.catalog;
 
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 public class SearchControllerTest {
 
-	// @InjectMocks
+	@InjectMocks
 	SearchController underTest;
+
+	@Mock
+	ProductRepository productRepo;
+
+	@Mock
+	Product product1;
+
+	@Mock
+	Product product2;
 
 	@Before
 	public void setup() {
-		underTest = new SearchController();
-		// MockitoAnnotations.initMocks(this);
+		MockitoAnnotations.initMocks(this);
 	}
 
 	@Test
-	public void shouldSearchAndFindOneProductByName() {
-		Product result = underTest.findProductByName("test");
+	public void shouldFindProductsByNameFromDatabase() {
+		when(productRepo.findByName("test")).thenReturn(new ArrayList<Product>(Arrays.asList(product1, product2)));
 
-		assertThat(result.getName(), is("test"));
+		Collection<Product> results = underTest.findProductByName("test");
+
+		assertThat(results, containsInAnyOrder(product1, product2));
 	}
 
 }
