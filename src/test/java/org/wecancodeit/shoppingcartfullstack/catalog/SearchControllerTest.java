@@ -1,5 +1,6 @@
 package org.wecancodeit.shoppingcartfullstack.catalog;
 
+import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -45,11 +46,17 @@ public class SearchControllerTest {
 
 	@Test
 	public void shouldReturnEmptyCollectionWhenProductNameNotFound() {
-		// when(productRepo.findByName("notFound")).thenReturn(new
-		// ArrayList<Product>());
-
 		Collection<Product> results = underTest.findProductByName("notFound");
 		assertThat(results.isEmpty(), is(true));
+	}
+
+	@Test
+	public void shouldFindProductByTag() {
+		when(productRepo.findByTagsContaining("test")).thenReturn(new ArrayList<Product>(Arrays.asList(product1)));
+
+		Collection<Product> results = underTest.findProductByTag("test");
+
+		assertThat(results, contains(product1));
 
 	}
 

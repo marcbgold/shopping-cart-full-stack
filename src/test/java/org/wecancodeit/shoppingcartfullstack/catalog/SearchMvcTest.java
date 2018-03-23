@@ -27,4 +27,11 @@ public class SearchMvcTest {
 		mvc.perform(get("/search")).andExpect(status().isOk());
 	}
 
+	@Test
+	public void shouldRetrieveOneProductWithTagTest() throws Exception {
+
+		mvc.perform(get("/search/test")).andExpect(status().isOk());
+
+	}
+
 }
