@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ public class BrowseController {
 	@Resource
 	private ProductRepository productRepo;
 
-	@RequestMapping("/products")
+	@RequestMapping(path = "/products", method = RequestMethod.GET)
 	public Iterable<Product> findAllProducts() {
 		return productRepo.findAll();
 	}
