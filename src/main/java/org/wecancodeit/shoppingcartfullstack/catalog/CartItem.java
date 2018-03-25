@@ -13,6 +13,9 @@ public class CartItem {
 	private long id;
 
 	@ManyToOne
+	private Cart cart;
+
+	@ManyToOne
 	private Product product;
 	private int quantity;
 
@@ -20,13 +23,18 @@ public class CartItem {
 	private CartItem() {
 	}
 
-	public CartItem(Product product, int quantity) {
+	public CartItem(Cart cart, Product product, int quantity) {
+		this.cart = cart;
 		this.product = product;
 		this.quantity = quantity;
 	}
 
 	public long getId() {
 		return id;
+	}
+
+	public Cart getCart() {
+		return cart;
 	}
 
 	public Product getProduct() {
