@@ -49,4 +49,14 @@ public class ContainerRestTest {
 
 		assertThat(status, is(HttpStatus.OK));
 	}
+
+	@Test
+	public void shouldDisplayCart() {
+		ResponseEntity<String> response = restTemplate.getForEntity("/cart", String.class);
+
+		HttpStatus status = response.getStatusCode();
+
+		assertThat(status, is(HttpStatus.OK));
+	}
+
 }

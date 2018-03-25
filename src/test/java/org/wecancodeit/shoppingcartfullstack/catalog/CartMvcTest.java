@@ -13,8 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(SearchController.class)
-public class SearchMvcTest {
+@WebMvcTest(CartController.class)
+public class CartMvcTest {
 
 	@Resource
 	private MockMvc mvc;
@@ -22,18 +22,9 @@ public class SearchMvcTest {
 	@MockBean
 	private ProductRepository productRepo;
 
-	@MockBean
-	private TagRepository tagRepo;
-
 	@Test
-	public void shouldDisplaySearchResultsPage() throws Exception {
-		mvc.perform(get("/search")).andExpect(status().isOk());
-	}
-
-	@Test
-	public void shouldRetrieveOneProductWithTagTest() throws Exception {
-		mvc.perform(get("/search/test")).andExpect(status().isOk());
-
+	public void shouldDisplayCart() throws Exception {
+		mvc.perform(get("/cart")).andExpect(status().isOk());
 	}
 
 }
