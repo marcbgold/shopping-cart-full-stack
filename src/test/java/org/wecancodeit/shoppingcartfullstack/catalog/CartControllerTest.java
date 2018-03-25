@@ -19,10 +19,16 @@ public class CartControllerTest {
 	CartController underTest;
 
 	@Mock
-	private CartItemRepository cartItemRepo;
+	private Cart cart;
+
+	@Mock
+	private CartRepository cartRepo;
 
 	@Mock
 	private CartItem cartItem;
+
+	@Mock
+	private CartItemRepository cartItemRepo;
 
 	@Before
 	public void setup() {
@@ -31,9 +37,10 @@ public class CartControllerTest {
 
 	@Test
 	public void shouldDisplayCart() {
-		when(cartItemRepo.findAll()).thenReturn(Collections.singleton(cartItem));
+		when(cartRepo.findById(1L)).thenReturn(cart);
+		when(cartItemRepo.findByCart(cart)).thenReturn(Collections.singleton(cartItem));
 
-		Iterable<CartItem> result = underTest.displayCart();
+		Iterable<CartItem> result = underTest.displayCart(1L);
 
 		assertThat(result, contains(any(CartItem.class)));
 	}
