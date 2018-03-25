@@ -14,6 +14,9 @@ public class SearchController {
 	@Resource
 	private ProductRepository productRepo;
 
+	@Resource
+	private TagRepository tagRepo;
+
 	@RequestMapping("/search")
 	public Collection<Product> findProductByName(String input) {
 		return productRepo.findByName(input);
@@ -21,8 +24,8 @@ public class SearchController {
 
 	@RequestMapping("/search/{input}")
 	public Collection<Product> findProductByTag(@PathVariable String input) {
-
-		return productRepo.findByTagsContaining(input);
+		Tag searchedTag = tagRepo.findByName(input);
+		return productRepo.findByTagsContaining(searchedTag);
 	}
 
 }

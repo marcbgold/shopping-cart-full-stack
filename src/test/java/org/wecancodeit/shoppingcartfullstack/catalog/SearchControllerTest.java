@@ -25,10 +25,16 @@ public class SearchControllerTest {
 	ProductRepository productRepo;
 
 	@Mock
+	TagRepository tagRepo;
+
+	@Mock
 	Product product1;
 
 	@Mock
 	Product product2;
+
+	@Mock
+	Tag tag;
 
 	@Before
 	public void setup() {
@@ -52,7 +58,8 @@ public class SearchControllerTest {
 
 	@Test
 	public void shouldFindProductByTag() {
-		when(productRepo.findByTagsContaining("test")).thenReturn(new ArrayList<Product>(Arrays.asList(product1)));
+		when(tagRepo.findByName("test")).thenReturn(tag);
+		when(productRepo.findByTagsContaining(tag)).thenReturn(new ArrayList<Product>(Arrays.asList(product1)));
 
 		Collection<Product> results = underTest.findProductByTag("test");
 

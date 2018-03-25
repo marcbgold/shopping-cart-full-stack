@@ -3,6 +3,8 @@ package org.wecancodeit.shoppingcartfullstack.catalog;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -35,6 +37,21 @@ public class ProductSearchJpaTest {
 		entityManager.clear();
 
 		assertThat(product.getTags(), contains(tag));
+	}
+
+	@Test
+	public void shouldFindItemByTagDescription() {
+		Tag tag = new Tag("description");
+		tag = tagRepo.save(tag);
+		Product product = new Product("test", tag);
+		product = productRepo.save(product);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		Collection<Product> results = productRepo.findByTagsContaining(tag);
+
+		assertThat(results, contains(product));
 	}
 
 }
