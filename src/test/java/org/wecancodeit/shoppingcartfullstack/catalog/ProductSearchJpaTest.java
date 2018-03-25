@@ -26,6 +26,9 @@ public class ProductSearchJpaTest {
 	@Resource
 	private TagRepository tagRepo;
 
+	@Resource
+	private CartItemRepository cartItemRepo;
+
 	@Test
 	public void shouldCreateAndAssignTagToNewProduct() {
 		Tag tag = new Tag("test tag");

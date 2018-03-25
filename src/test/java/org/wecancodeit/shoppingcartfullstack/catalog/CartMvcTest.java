@@ -20,7 +20,7 @@ public class CartMvcTest {
 	private MockMvc mvc;
 
 	@MockBean
-	private ProductRepository productRepo;
+	private CartItemRepository cartitemRepo;
 
 	@Test
 	public void shouldDisplayCart() throws Exception {
