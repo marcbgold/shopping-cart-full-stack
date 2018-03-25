@@ -21,23 +21,40 @@ public class CartJpaTest {
 	@Resource
 	private ProductRepository productRepo;
 
-	// @Resource
-	// private TagRepository tagRepo;
+	@Resource
+	private CartRepository cartRepo;
 
 	@Resource
 	private CartItemRepository cartItemRepo;
 
 	@Test
 	public void shouldCreateAndAssignProductToCartItem() {
+		Cart cart = new Cart();
+		cart = cartRepo.save(cart);
 		Product product = new Product("test");
 		product = productRepo.save(product);
-		CartItem cartItem = new CartItem(product, 1);
+		CartItem cartItem = new CartItem(cart, product, 1);
 		cartItem = cartItemRepo.save(cartItem);
 
 		entityManager.flush();
 		entityManager.clear();
 
 		assertThat(cartItem.getProduct(), is(product));
+	}
+
+	@Test
+	public void shouldCreateAndAssignCartToCartItem() {
+		Cart cart = new Cart();
+		cart = cartRepo.save(cart);
+		Product product = new Product("test");
+		product = productRepo.save(product);
+		CartItem cartItem = new CartItem(cart, product, 1);
+		cartItem = cartItemRepo.save(cartItem);
+
+		entityManager.flush();
+		entityManager.clear();
+
+		assertThat(cartItem.getCart(), is(cart));
 	}
 
 }
