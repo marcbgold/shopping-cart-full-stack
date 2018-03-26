@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Products</h1>
+	<ul th:each="product:${products}">
+		<li>
+			<a th:href="@{/product(id=${product.id})}" th:text="${product.name}" />
+		</li>
+	</ul>
+	<a href="http://localhost:8080/products">Back to home</a>
+
+</body>
+</html>

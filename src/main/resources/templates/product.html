@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+	<header>
+		<h1>
+			<span th:text="${product.name}" />
+		</h1>
+	</header>
+	
+	<h2>Tags</h2>
+	
+	<ul th:each="product:${product.tags}">
+		<li>
+		<span th:text="${product.tag}" />
+		</li>
+	</ul>
+
+
+</body>
+</html>
