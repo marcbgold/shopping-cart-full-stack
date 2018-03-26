@@ -34,24 +34,23 @@ public class siteController {
 		return "product"; 	
 	}
 	
-	@RequestMapping("/my-cart")
+	@RequestMapping("/mycart")
 	public String myCart(@RequestParam long id, Model model) {
 		Cart cart = cartRepo.findById(id); 
 		Iterable<CartItem> cartItems = cartItemRepo.findAll(); 
-		model.addAttribute("carts", cartRepo); 
 		model.addAttribute("cartItems", cartItems); 
 		return "mycart"; 
 	}
 	
 	@RequestMapping("/add-item")
-	public String addItem(@RequestParam long id, String productName) {
+	public String addItem(@RequestParam long id, Integer itemQuantity) {
 		Product product = productRepo.findOne(id);
-		Cart cart = cartRepo.findById(id); 
+		Cart cart = cartRepo.findById(0L); 
 		
-		CartItem newItem = new CartItem(cart, product, 1); 
+		CartItem newItem = new CartItem(cart, product, itemQuantity); 
 		cartItemRepo.save(newItem); 
 		
-		return "/products"; 
+		return "redirect:/mycart" + 0L; 
 	}
 	
 

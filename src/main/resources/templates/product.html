@@ -17,10 +17,19 @@
 	<ul th:each="product:${product.tags}">
 		<li><span th:text="${product.name}" /></li>
 	</ul>
-	<div>
-		<button th:formaction="@{/add-item}">Add To Cart</button>
-	</div>
 
+	<form method="POST">
+		<div>
+			<label>Enter Quanity</label> <input type="number" name="itemQuantity" min="0" max="10" />
+		</div>
+		<div>
+			<button th:formaction="@{/add-item}">Add To Cart</button>
+		</div>
+	</form>
+
+	<div>
+		<a href="http://localhost:8080/products">Back to home</a>
+	</div>
 
 </body>
 </html>

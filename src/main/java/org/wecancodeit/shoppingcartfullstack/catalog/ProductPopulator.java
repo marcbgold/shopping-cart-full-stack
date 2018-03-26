@@ -44,8 +44,11 @@ public class ProductPopulator implements CommandLineRunner{
 			
 			Cart cart = new Cart(); 
 			
+			cart = cartRepo.save(cart); 
 			
+			CartItem item = new CartItem(cart, wlshirt, 1); 
 			
+			item = cartItemRepo.save(item); 
 			
 			
 			
