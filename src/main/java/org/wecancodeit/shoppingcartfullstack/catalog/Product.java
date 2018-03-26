@@ -24,6 +24,8 @@ public class Product {
 
 	@OneToMany(mappedBy = "product")
 	private Collection<CartItem> cartItems;
+	
+	private String info; 
 
 	@SuppressWarnings("unused")
 	private Product() {
@@ -44,6 +46,14 @@ public class Product {
 
 	public Collection<Tag> getTags() {
 		return tags;
+	}
+	
+	public String getInfo() {
+		return info; 
+	}
+	
+	public void editInfo(String info) {
+		this.info = info; 
 	}
 
 	@Override

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cart</title>
+</head>
+<body>
+	<h1>My Cart</h1>
+	<ul th:each="cartItem:${cartItems}">
+		<li>
+			<span th:text="${cartItem.name}" />
+		</li>
+	</ul>
+	
+	<a href="http://localhost:8080/products">Back to home</a>
+
+</body>
+</html>
