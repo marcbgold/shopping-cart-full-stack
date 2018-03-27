@@ -8,6 +8,7 @@
 	<ul th:each="cartItem:${cartItems}">
 		<li>
 			<span th:text="${cartItem.name}" />
+			<p>Quantity: </p>
 			<span th:text="${cartItem.quantity}" />
 		</li>
 	</ul>

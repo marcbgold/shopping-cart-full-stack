@@ -10,5 +10,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
 	Collection<Product> findByTagsContaining(Tag input);
 	
+	Product findById(long id); 
+	
 
 }

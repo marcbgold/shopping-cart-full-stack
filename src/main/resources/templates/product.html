@@ -23,7 +23,7 @@
 			<label>Enter Quanity</label> <input type="number" name="itemQuantity" min="0" max="10" />
 		</div>
 		<div>
-			<button th:formaction="@{/add-item}">Add To Cart</button>
+			<button th:formaction="@{/add-item(id=${product.id})}">Add To Cart</button>
 		</div>
 	</form>
 

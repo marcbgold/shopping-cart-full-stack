@@ -44,13 +44,13 @@ public class siteController {
 	
 	@RequestMapping("/add-item")
 	public String addItem(@RequestParam long id, Integer itemQuantity) {
-		Product product = productRepo.findOne(id);
+		Product product = productRepo.findById(id);
 		Cart cart = cartRepo.findById(0L); 
 		
 		CartItem newItem = new CartItem(cart, product, itemQuantity); 
 		cartItemRepo.save(newItem); 
 		
-		return "redirect:/mycart" + 0L; 
+		return "redirect:/mycart?id=" + 0L; 
 	}
 	
 
