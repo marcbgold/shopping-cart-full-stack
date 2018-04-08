@@ -44,6 +44,10 @@ public class CartItem {
 	public int getQuantity() {
 		return quantity;
 	}
+	
+	public String getName() {
+		return product.getName(); 
+	}
 
 	@Override
 	public int hashCode() {

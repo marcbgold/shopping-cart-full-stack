@@ -9,15 +9,27 @@
 			<span th:text="${product.name}" />
 		</h1>
 	</header>
-	
+
+	<h2>Description</h2>
+	<span th:text="${product.info}" />
+
 	<h2>Tags</h2>
-	
 	<ul th:each="product:${product.tags}">
-		<li>
-		<span th:text="${product.tag}" />
-		</li>
+		<li><span th:text="${product.name}" /></li>
 	</ul>
 
+	<form method="POST">
+		<div>
+			<label>Enter Quanity</label> <input type="number" name="itemQuantity" min="0" max="10" />
+		</div>
+		<div>
+			<button th:formaction="@{/add-item(id=${product.id})}">Add To Cart</button>
+		</div>
+	</form>
+
+	<div>
+		<a href="http://localhost:8080/products">Back to home</a>
+	</div>
 
 </body>
 </html>

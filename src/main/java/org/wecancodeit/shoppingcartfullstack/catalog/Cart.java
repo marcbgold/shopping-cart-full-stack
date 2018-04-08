@@ -27,7 +27,7 @@ public class Cart {
 	public Collection<CartItem> getCartItems() {
 		return cartItems;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return ((Long) id).hashCode();
@@ -45,5 +45,6 @@ public class Cart {
 
 		return id == ((Cart) obj).id;
 	}
+
 
 }
