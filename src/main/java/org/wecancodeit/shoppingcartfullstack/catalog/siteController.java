@@ -53,5 +53,10 @@ public class siteController {
 		return "redirect:/mycart?id=" + 0L; 
 	}
 	
+	@RequestMapping("/remove-item")
+	public void removeItem(@RequestParam long id, Integer itemQuanitity) {
+		CartItem itemToRemove = cartItemRepo.findOne(id); 
+		cartItemRepo.delete(itemToRemove);
+	}
 
 }
