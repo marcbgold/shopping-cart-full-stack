@@ -41,7 +41,7 @@ xhr.onreadystatechange = function() {
 			}
 		}
 
-		console.log(res)
+//		console.log(res)
 	}
 }
 
