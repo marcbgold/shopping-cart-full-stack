@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Cart {
 
@@ -14,6 +16,7 @@ public class Cart {
 	@GeneratedValue
 	private long id;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "cart")
 	private Collection<CartItem> cartItems;
 

@@ -1,24 +1,27 @@
-const xhr = new XMLHttpRequest()
-xhr.onreadystatechange = function() {
-	if (xhr.readyState === 4 && xhr.status === 200) {
-		console.log(xhr.responseText)
-		const res = JSON.parse(xhr.response)
+const xhr1 = new XMLHttpRequest()
+xhr1.onreadystatechange = function() {
+	if (xhr1.readyState === 4 && xhr1.status === 200) {
+		console.log(xhr1.responseText)
+		const res = JSON.parse(xhr1.response)
 
 		if(res.length) {
 			res.forEach(function(product) {
-				appendOneElementToBody(product)
+				appendOneElementToCart(product)
 			})
 		} else {
-			appendOneElementToBody(res)
+			appendOneElementToCart(res)
 		}
 
 		function appendOneElementToCart(res) {
 			const body = document.querySelector('.cart')
 
-			const cartContainer = document.createElement('div')
-			cartContainer.classList.add('cartContainer')
+			const cartItemContainer = document.createElement('div')
+			cartItemContainer.classList.add('cartContainer')
 
-			appendElement(productContainer, createElement('h2',))
+			appendElement(cartItemContainer, createElement('h2', res.name))
+			appendElement(cartItemContainer, createElement('p', res.quantity))
+			
+			appendElement(body, cartItemContainer)
 
 		}
 
@@ -43,5 +46,5 @@ xhr.onreadystatechange = function() {
 	}
 }
 
-xhr.open('GET', 'http://localhost:8080/cart/1', true)
-xhr.send()
+xhr1.open('GET', 'http://localhost:8080/cart/1', true)
+xhr1.send()
