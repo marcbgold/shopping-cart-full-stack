@@ -34,24 +34,21 @@ public class ProductPopulator implements CommandLineRunner{
 			medium = tagRepo.save(medium); 
 			large = tagRepo.save(large); 
 			
-			Product wlshirt = new Product("Shirt1",white,large);
-			Product sbshirt = new Product("Shirt2",black,small);
-			wlshirt.editInfo("large white shirt"); 
-			sbshirt.editInfo("small black shirt"); 
+			Product wshirt1 = new Product("Shirt1",white,large);
+			Product bshirt1 = new Product("Shirt2",black,small);
+			wshirt1.editInfo("large white shirt"); 
+			bshirt1.editInfo("small black shirt"); 
 			
-			wlshirt = productRepo.save(wlshirt); 
-			sbshirt = productRepo.save(sbshirt); 
+			wshirt1 = productRepo.save(wshirt1); 
+			bshirt1 = productRepo.save(bshirt1); 
 			
 			Cart cart = new Cart(); 
 			
 			cart = cartRepo.save(cart); 
 			
-			CartItem item = new CartItem(cart, wlshirt, 1); 
+			CartItem item = new CartItem(cart, wshirt1, 1); 
 			
 			item = cartItemRepo.save(item); 
-			
-			
-			
 		}
 		
 }
